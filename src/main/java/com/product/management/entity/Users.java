@@ -34,4 +34,12 @@ public class Users {
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime registeredAt;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id", nullable = false)
+    private Positions positions;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Departments departments;
 }
