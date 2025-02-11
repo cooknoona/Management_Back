@@ -28,4 +28,10 @@ public class Companies {
 
     @Column(nullable = true, length = 100)
     private String phone;
+
+    @Column(nullable = true, length = 100)
+    private String bankName;
+
+    @Column(nullable = true, length = 100)
+    private String bankAccount;
 }
