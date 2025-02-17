@@ -3,6 +3,7 @@ package com.product.management.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class Products {
     @Column(nullable = false, length = 200)
     private String productName;
 
+    @Column(nullable = false, length = 20)
+    private int quantity;
+
     @Column(nullable = true, length = 20)
     private Long price;
 
@@ -45,6 +49,15 @@ public class Products {
     @Column(nullable = true, length = 20)
     private String weight;
 
+    @Column(nullable = false, length = 100)
+    private LocalDate importedDate;
+
+    @Column(nullable = false, length = 100)
+    private LocalDate exportedDate;
+
+    @Column(nullable = true, length = 100)
+    private String importedBy;
+
     // Categories 는 최상위 엔티티
     // Categories = One to Many = Products
     @ManyToOne
@@ -59,4 +72,12 @@ public class Products {
         inverseJoinColumns = @JoinColumn(name = "colour_id")
     )
     private List<Colours> colours = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "product_company",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
+    private List<Companies> companies = new ArrayList<>();
 }

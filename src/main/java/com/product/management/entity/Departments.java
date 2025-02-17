@@ -19,9 +19,12 @@ public class Departments {
     @Column(name="department_id")
     private Long id;
 
+    @Column(nullable = false, length = 20)
+    private String departmentCode;
+
     @Column(nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Users> users;
+    @OneToMany(mappedBy = "departments")
+    private List<Employees> employees;
 }
