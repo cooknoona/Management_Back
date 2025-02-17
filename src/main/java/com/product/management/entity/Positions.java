@@ -19,9 +19,12 @@ public class Positions {
     @Column(name="position_id")
     private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String title;
+    @Column(nullable = false, length = 20)
+    private String positionCode;
 
-    @OneToMany(mappedBy = "position")
-    private List<Users> users;
+    @Column(nullable = false, length = 50)
+    private String positionName;
+
+    @OneToMany(mappedBy = "positions")
+    private List<Employees> users;
 }

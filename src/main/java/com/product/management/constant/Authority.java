@@ -1,6 +1,7 @@
 package com.product.management.constant;
 
-public enum Role {
+public enum Authority {
     ADMIN,
-    USER
+    MANAGER,
+    STAFF
 }

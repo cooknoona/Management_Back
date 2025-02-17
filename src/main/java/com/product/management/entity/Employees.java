@@ -1,21 +1,26 @@
 package com.product.management.entity;
 
+import com.product.management.constant.Authority;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
+@Table(name = "employees")
 @Getter @Setter @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Users {
+public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
+    @Column(name="employee_id")
     private Long id;
+
+    @Column(nullable = false, length = 20)
+    private String employeeCode;
 
     @Column(nullable = false, unique = false, length = 20)
     private String name;
@@ -32,8 +37,19 @@ public class Users {
     @Column(nullable = false, length = 200)
     private String address;
 
+    // 입사일
+    @Column(nullable = false, updatable = false)
+    private LocalDate hiredDate;
+
+    // 프로그램 가입일
     @Column(nullable = false, updatable = false)
     private LocalDateTime registeredAt;
+
+    @Column(nullable = true, length = 30)
+    private int salary;
+
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
 
     @ManyToOne
     @JoinColumn(name = "position_id", nullable = false)

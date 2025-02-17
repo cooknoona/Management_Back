@@ -3,6 +3,9 @@ package com.product.management.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "companies")
 @Getter
@@ -26,12 +29,15 @@ public class Companies {
     @Column(nullable = true, length = 100)
     private String address;
 
-//    @Column(nullable = true, length = 100)
-//    private String phone;
+    @Column(nullable = true, length = 100)
+    private String phone;
 
     @Column(nullable = true, length = 100)
     private String bankName;
 
     @Column(nullable = true, length = 100)
     private String bankAccount;
+
+    @ManyToMany
+    private List<Products> products = new ArrayList<>();
 }
