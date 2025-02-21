@@ -78,8 +78,7 @@ public class JwtUtility {
 
     // Re-Issue access token
     public String reIssueAccessToken(Authentication authentication, HttpServletResponse httpServletResponse) {
-        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-        return generateToken(customUserDetails, httpServletResponse).getAccessToken();
+        return getPrincipal(authentication, httpServletResponse).getAccessToken();
     }
 
     // Parsing token before authentication
