@@ -65,6 +65,7 @@ public class Products {
     private Categories categories;
 
     // Colours 는 중복된 값을 허용 하므로 Many to Many
+    @Builder.Default
     @ManyToMany
     @JoinTable(
         name = "product_colour",
@@ -73,6 +74,7 @@ public class Products {
     )
     private List<Colours> colours = new ArrayList<>();
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(
         name = "product_company",

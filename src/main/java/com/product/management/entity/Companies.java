@@ -38,6 +38,7 @@ public class Companies {
     @Column(nullable = true, length = 100)
     private String bankAccount;
 
+    @Builder.Default
     @ManyToMany
     private List<Products> products = new ArrayList<>();
 }
