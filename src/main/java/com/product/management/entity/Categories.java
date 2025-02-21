@@ -24,6 +24,7 @@ public class Categories {
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 
+    @Builder.Default
     @OneToMany(mappedBy = "categories")
     private List<Products> products = new ArrayList<>();
 }

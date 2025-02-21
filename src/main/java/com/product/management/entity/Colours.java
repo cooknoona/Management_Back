@@ -24,6 +24,7 @@ public class Colours {
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 
+    @Builder.Default
     @ManyToMany(mappedBy = "colours")
     private List<Products> products = new ArrayList<>();
 }
