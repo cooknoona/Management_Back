@@ -1,6 +1,8 @@
 package com.product.management.entity;
 
 import com.product.management.constant.Authority;
+import com.product.management.constant.Departments;
+import com.product.management.constant.Positions;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -51,11 +53,9 @@ public class Employees {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
-    @ManyToOne
-    @JoinColumn(name = "position_id", nullable = false)
-    private Positions positions;
-
-    @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Departments departments;
+
+    @Enumerated(EnumType.STRING)
+    private Positions positions;
 }

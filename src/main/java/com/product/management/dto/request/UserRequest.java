@@ -1,9 +1,7 @@
 package com.product.management.dto.request;
 
 import com.product.management.constant.Authority;
-import com.product.management.entity.Departments;
 import com.product.management.entity.Employees;
-import com.product.management.entity.Positions;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
