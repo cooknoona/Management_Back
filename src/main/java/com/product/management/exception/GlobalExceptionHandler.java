@@ -17,37 +17,37 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException e) {
-        ErrorResponse errorResponse = new ErrorResponse(400, e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(400, e.getMessage(), false);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleUnauthorisedException(AuthenticationException e) {
-        ErrorResponse errorResponse = new ErrorResponse(401, e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(401, e.getMessage(), false);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException e) {
-        ErrorResponse errorResponse = new ErrorResponse(403, e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(403, e.getMessage(), false);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleNotFoundException(EntityNotFoundException e) {
-        ErrorResponse errorResponse = new ErrorResponse(404, e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(404, e.getMessage(), false);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleConflictException(DuplicateKeyException e) {
-        ErrorResponse errorResponse = new ErrorResponse(409, e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(409, e.getMessage(), false);
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleInternalServerErrorException(InternalException e) {
-        ErrorResponse errorResponse = new ErrorResponse(500, e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(500, e.getMessage(), false);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 }
