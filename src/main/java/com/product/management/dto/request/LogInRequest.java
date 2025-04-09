@@ -13,7 +13,8 @@ public class LogInRequest {
     private String employeeCode;
     private String password;
 
-    // To create an authenticate object to verify a user
+    /**
+     * To create an authenticate object to verify a user */
     public UsernamePasswordAuthenticationToken toAuthentication() {
         return new UsernamePasswordAuthenticationToken(employeeCode, password);
     }

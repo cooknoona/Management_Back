@@ -29,7 +29,8 @@ public class UserRequest {
     private Positions positions;
     private Departments departments;
 
-    // Request entity builder pattern for user registration
+    /**
+     * Request entity builder pattern for user registration */
     public Employees toJoin(PasswordEncoder passwordEncoder) {
         return Employees.builder()
                 .name(name)
@@ -43,7 +44,8 @@ public class UserRequest {
                 .build();
     }
 
-    // Request entity builder pattern for modifying user info
+    /**
+     * Request entity builder pattern for modifying user info */
     public Employees toModify(PasswordEncoder passwordEncoder) {
         return Employees.builder()
                 .name(name)
