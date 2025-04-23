@@ -1,6 +1,6 @@
 package com.product.management.controller;
 
-import com.product.management.dto.request.UserRequest;
+import com.product.management.dto.request.EmployeeRequest;
 import com.product.management.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class AuthController {
 
     // Controller for user registration
     @PostMapping("/join")
-    ResponseEntity<?> registration(@RequestBody UserRequest userRequest) {
+    ResponseEntity<?> registration(@RequestBody EmployeeRequest userRequest) {
         return ResponseEntity.ok(authService.registration(userRequest));
     }
 }

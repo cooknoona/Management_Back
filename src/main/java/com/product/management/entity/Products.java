@@ -33,19 +33,19 @@ public class Products {
     @Column(nullable = true, length = 20)
     private Long price;
 
-    // 제품의 위치, 예) A-10, A-2, B-3
+    /** Where the location is like A-10, B-3, C-12 */
     @Column(nullable = true, length = 10)
     private String location;
 
-    // 상품의 길이
+    /** Width of the item /cm */
     @Column(nullable = true, length = 20)
     private String width;
 
-    // 상품의 높이
+    /** Height of the item /cm */
     @Column(nullable = true, length = 20)
     private String height;
 
-    // 상품의 무게
+    /** Weight of the item /kg */
     @Column(nullable = true, length = 20)
     private String weight;
 
@@ -58,13 +58,13 @@ public class Products {
     @Column(nullable = true, length = 100)
     private String importedBy;
 
-    // Categories 는 최상위 엔티티
-    // Categories = One to Many = Products
+    /** Categories is the highest entity
+     * Categories = One to Many = Products */
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Categories categories;
 
-    // Colours 는 중복된 값을 허용 하므로 Many to Many
+    /** Colours is allowed to have duplicated values so it's Many to Many */
     @Builder.Default
     @ManyToMany
     @JoinTable(

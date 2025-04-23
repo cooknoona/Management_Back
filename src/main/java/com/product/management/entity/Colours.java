@@ -20,7 +20,7 @@ public class Colours {
     @Column(name="colour_id")
     private Long id;
 
-    // Colour 이름, 예) 파랑, 빨강, 주황
+    /** Colours name - Blue, Red, Yellow, Black */
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 

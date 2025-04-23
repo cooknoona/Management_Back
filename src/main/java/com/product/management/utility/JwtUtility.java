@@ -31,27 +31,27 @@ public class JwtUtility {
     private static final long REFRESH_TOKEN_EXPIRATION = 60 * 60 * 1000 * 24 * 7;   // 7 Days
     private final UserRepository userRepository;
 
-    // Create constructor parameter to inject dependency
-    // @RequiredArgsConstructor can't call constructor with parameter fields
+    /** Create constructor parameter to inject dependency
+     * So @RequiredArgsConstructor can't call constructor with parameter fields */
     public JwtUtility(JwtConfig jwtConfig, UserRepository userRepository) {
         this.secretKey = jwtConfig.getSecretKey();
         this.userRepository = userRepository;
     }
 
-    // To get the Object of authenticated user via CustomUserDetails
+    /** To get the Object of authenticated user via CustomUserDetails */
     public TokenResponse getPrincipal(Authentication authentication, HttpServletResponse httpServletResponse) {
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
         return generateToken(customUserDetails, httpServletResponse);
     }
 
-    // To generate access token and refresh token
+    /** To generate access token and refresh token
+     * And AccessToken, RefreshToken compacting */
     private TokenResponse generateToken(CustomUserDetails customUserDetails, HttpServletResponse httpServletResponse) {
         SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());   // Used by SHA-256
         long now = (new Date()).getTime();
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_EXPIRATION);
         Date refreshTokenExpiresIn = new Date(now + REFRESH_TOKEN_EXPIRATION);
 
-        // AccessToken compacting
         String accessToken = Jwts.builder()
                 .subject(String.valueOf(customUserDetails.id()))
                 .claim("name", customUserDetails.name())
@@ -60,7 +60,6 @@ public class JwtUtility {
                 .signWith(key)
                 .compact();
 
-        // RefreshToken compacting
         String refreshToken = Jwts.builder()
                 .subject(String.valueOf(customUserDetails.id()))
                 .claim("name", customUserDetails.name())
@@ -76,12 +75,12 @@ public class JwtUtility {
                 .build();
     }
 
-    // Re-Issue access token
+    /** Re-Issue access token */
     public String reIssueAccessToken(Authentication authentication, HttpServletResponse httpServletResponse) {
         return getPrincipal(authentication, httpServletResponse).getAccessToken();
     }
 
-    // Parsing token before authentication
+    /** Parsing token before authentication */
     public Claims parseToken(String token) {
         SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
         return Jwts.parser()
@@ -91,7 +90,7 @@ public class JwtUtility {
                 .getPayload();
     }
 
-    // To create authenticate object to compare
+    /** To create authenticate object to compare */
     public Authentication getAuthentication(String token) {
         Claims claims = parseToken(token);
 

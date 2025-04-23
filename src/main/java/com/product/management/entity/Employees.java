@@ -39,11 +39,10 @@ public class Employees {
     @Column(nullable = false, length = 200)
     private String address;
 
-    // 입사일
     @Column(nullable = false, updatable = false)
     private LocalDate hiredDate;
 
-    // 프로그램 가입일
+    /** When you join the programme */
     @Column(nullable = false, updatable = false)
     private LocalDateTime registeredAt;
 

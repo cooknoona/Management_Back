@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequest {
+public class EmployeeRequest {
     private String employeeCode;
     private String name;
     private String password;

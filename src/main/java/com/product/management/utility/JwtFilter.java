@@ -39,7 +39,7 @@ public class JwtFilter extends OncePerRequestFilter {
         filterChain.doFilter(httpServletRequest, httpServletResponse); // To deliver it to the next filter
     }
 
-    // Authorization 헤더에서 토큰 추출
+    /** Extract Token from Authorization header */
     private String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {

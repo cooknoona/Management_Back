@@ -1,6 +1,6 @@
 package com.product.management.service;
 
-import com.product.management.dto.request.UserRequest;
+import com.product.management.dto.request.EmployeeRequest;
 import com.product.management.entity.Employees;
 import com.product.management.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -36,7 +36,7 @@ public class AuthService {
         };
     }
 
-    public Boolean registration(UserRequest userRequest) {
+    public Boolean registration(EmployeeRequest userRequest) {
         Employees employees = userRequest.toJoin(passwordEncoder);
         userRepository.save(employees);
         return true;

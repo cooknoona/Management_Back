@@ -20,7 +20,7 @@ public class Categories {
     @Column(name="category_id")
     private Long id;
 
-    // Category 이름, 예) 가전제품, 의류, 식품
+    /** Category name - Pipe, Basket */
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 

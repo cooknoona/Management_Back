@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-// Record class for authenticate object from CustomUserDetailsService
+/** Record class for authenticate object from CustomUserDetailsService */
 public record CustomUserDetails(
         Long id,
         String employeeCode,
